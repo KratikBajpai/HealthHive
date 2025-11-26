@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthHive 🩺</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="logo.jpg" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <div>
+      <img src="logo.jpg" alt="HealthHive Logo" class="logo">
+      <h1>🐝 HealthHive</h1>
+      <p>Your Smart Symptom & Wellness Assistant</p>
+    </div>
+  </header>
+
+  <nav>
+    <button onclick="toggleSection('symptomSection')">🩺 Symptom Checker</button>
+    <button onclick="toggleSection('firstAidSection')">🚑 First Aid</button>
+    <button onclick="toggleSection('bmiSection')">⚖️ BMI & Calories</button>
+    <button onclick="toggleSection('nutritionSection')">🥗 Nutrition Info</button>
+    <button onclick="emergencyAlert()">🚨 Emergency</button>
+  </nav>
+
+  <main>
+    <div id="greetBox" class="greeting"></div>
+
+    <!-- Symptom Checker -->
+    <section id="symptomSection" class="content hidden">
+      <h2>🩺 Symptom Checker</h2>
+      <input type="text" id="symptomInput" placeholder="Enter a symptom (e.g. headache, fever)">
+      <button onclick="showLoading('resultBox'); setTimeout(checkSymptoms,600)">Check</button>
+      <div id="resultBox"></div>
+    </section>
+
+    <!-- First Aid -->
+    <section id="firstAidSection" class="content hidden">
+      <h2>🚑 First Aid</h2>
+      <select id="aidSelect" onchange="showFirstAid()">
+        <option value="">Select a problem</option>
+        <option>Cut or Wound</option>
+        <option>Nose Bleeding</option>
+        <option>Burns (Minor)</option>
+        <option>Fracture (Broken Bone)</option>
+        <option>Fainting</option>
+        <option>Sprain or Strain</option>
+        <option>Insect Bite or Sting</option>
+        <option>Poisoning</option>
+        <option>Electric Shock</option>
+        <option>Eye Injury / Dust in Eye</option>
+      </select>
+      <div id="aidResult"></div>
+    </section>
+
+    <!-- BMI Section -->
+    <section id="bmiSection" class="content hidden">
+      <h2>⚖️ BMI & Maintenance Calories</h2>
+      <input id="height" type="number" placeholder="Height (cm)">
+      <input id="weight" type="number" placeholder="Weight (kg)">
+      <input id="age" type="number" placeholder="Age">
+      <select id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <select id="activity">
+        <option value="1.2">Sedentary</option>
+        <option value="1.375">Lightly Active</option>
+        <option value="1.55">Moderately Active</option>
+        <option value="1.725">Very Active</option>
+      </select>
+      <button onclick="calcBMI()">Calculate</button>
+      <div id="bmiResult"></div>
+      <div id="calorieResult"></div>
+    </section>
+
+    <!-- Nutrition Info -->
+    <section id="nutritionSection" class="content hidden">
+      <h2>🥗 Nutrition Info</h2>
+      <input type="text" id="nutritionInput" placeholder="Enter a food (e.g. apple, rice, milk)">
+      <button onclick="showLoading('nutritionBox'); setTimeout(showNutrition,600)">Check</button>
+      <div id="nutritionBox"></div>
+    </section>
+
+    <!-- About -->
+    <div class="about-section">
+      <h2>About HealthHive 🩺</h2>
+      <p>
+        HealthHive is your digital health companion — helping you understand symptoms, 
+        track wellness tips, and make informed health choices. 
+        We combine smart technology with human care to create a safer, healthier world.
+      </p>
+    </div>
+
+    <div class="about-section">
+      <h2>Did You Know? 💡</h2>
+      <p>
+        • Drinking enough water boosts immunity and skin glow.<br>
+        • 30 minutes of daily walking reduces heart risk by 40%.<br>
+        • Eating colorful fruits and veggies improves brain function and vision.<br>
+        • Adequate sleep helps regulate hormones and energy levels.
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 HealthHive | Data for awareness — consult professionals when needed.</p>
+  </footer>
+
+  <script>
+    function toggleSection(id) {
+      document.querySelectorAll('.content').forEach(sec => {
+        if (sec.id === id) {
+          sec.classList.toggle('hidden');
+          sec.classList.toggle('visible');
+        } else {
+          sec.classList.remove('visible');
+          sec.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
